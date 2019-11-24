@@ -1,6 +1,6 @@
 # GRAD Loadout, an improved A3G Loadout
 
-Declarative loadout system for Arma3.
+Declarative loadout system for Arma3 by [Gruppe Adler](https://www.gruppe-adler.de/).
 
 ## Acknowledgment
 
