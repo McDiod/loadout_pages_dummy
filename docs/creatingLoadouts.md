@@ -128,11 +128,17 @@ class FancySchmazyWeapon {
 ```
 
 ## Complete Example
-In this example the vanilla `BLU_F` faction is being used to for US OCP loadouts. All units of this faction will have the OCP uniform, vest and an M4A1 primary weapon as well as a number of other items. The Rifleman (Type `Soldier_F`) is then assigned uniform and vest contents, which will be used for other roles via inheritance. For example the Assistant Autorifleman will have the same loadout as the standard Rifleman, but with an added backpack. The Autorifleman will then overwrite the `primaryWeapon` assigned in `AllUnits` to use an LMG instead. The `vest` contents that he inherits from the Rifleman will also be overwritten.
+In this example the vanilla `BLU_F` faction is being used for US OCP loadouts. All units of this faction will have the OCP uniform, vest and an M4A1 primary weapon as well as a number of other items. The Rifleman (Type `Soldier_F`) is then assigned uniform and vest contents, which will be used for other roles via inheritance. For example the Assistant Autorifleman will have the same loadout as the standard Rifleman, but with an added backpack. The Autorifleman will then overwrite the `primaryWeapon` assigned in `AllUnits` to use an LMG instead. The `vest` contents that he inherits from the Rifleman will also be overwritten.
 
 Note that a `LIST` macro is utilized here, which can be found [here](https://github.com/gruppe-adler/grad-factions/blob/master/list_macros.hpp).
 
 ```sqf
+// initServer.sqf
+["BLU_F", "USOCP", true] call GRAD_Loadout_fnc_factionSetLoadout;
+```
+
+```sqf
+//description.ext
 class Loadouts {
     class USOCP {
         class AllUnits {
