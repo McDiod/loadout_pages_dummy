@@ -1,4 +1,4 @@
-![](http://i.imgur.com/NQr8g36.png)
+![](https://i.imgur.com/MbVBiCW.png)
 
 - [Home](/)
 - [Installation](installation.md)
