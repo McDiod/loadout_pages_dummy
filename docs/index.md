@@ -8,4 +8,7 @@ Declarative loadout system for Arma3
 *However, that project seems so dead and I changed so much that I saw it fit to rename repo & project. –– Fusselwurm, 2016-08-16*
 
 ## Contents
-- [[Installation|installation]]
+- [Installation](installation.md)
+- [Installation2](docs/installation.md)
+- [Installation3](https://mcdiod.github.io/loadout_pages_dummy/installation)
+- [Installation4](https://mcdiod.github.io/loadout_pages_dummy/installation.md)
