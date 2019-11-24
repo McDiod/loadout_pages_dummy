@@ -87,7 +87,7 @@ There are a couple of generic classes for you to use, ontop of being able to spe
     * Role/
         * unit role
     * Faction/
-        * faction name, e.g. BLU_F . Aliasing possible, see`GRAD_Loadout_fnc_FactionSetLoadout`!
+        * faction name, e.g. BLU_F . Aliasing possible, see [GRAD_Loadout_fnc_FactionSetLoadout](functions.md#GRAD_Loadout_fnc_factionSetLoadout)!
             * AllUnits
             * AllAi
             * AllPlayers
