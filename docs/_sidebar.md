@@ -1,3 +1,3 @@
 - **User Guide**
     - [Home](/)
-    - [Installation](Installation)
+    - [Installation](installation)
