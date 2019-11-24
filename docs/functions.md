@@ -1,7 +1,6 @@
 # Functions
 
 ## GRAD_Loadout_fnc_factionSetLoadout
-
 You can dynamically alias a faction name and optionally broadcast it over network (parameter 2, bool):
 
 `["BLU_F", "USMC", true] call GRAD_Loadout_fnc_factionSetLoadout;` – thus, you can change loadout presets for your factions. In this example, this would work now:
@@ -19,7 +18,6 @@ class Loadouts {
 ```
 
 ## GRAD_Loadout_fnc_doLoadoutForUnit
-
 Call this with unit as first parameter to dynamically assign loadout during scenario.
 
 **Example:**
@@ -29,7 +27,6 @@ Call this with unit as first parameter to dynamically assign loadout during scen
 ```
 
 ## GRAD_Loadout_fnc_addReviver
-
 Use to dynamically adjust loadout values. This example adds a bit of randomization to Russian helmets and broadcasts the reviver over network (parameter 2, bool):
 
 **Example:**
@@ -47,3 +44,6 @@ Use to dynamically adjust loadout values. This example adds a bit of randomizati
     true
 ] call GRAD_Loadout_fnc_addReviver;
 ```
+
+## `customGear` Functions
+There are a number of functions specifically for the `customGear` funcionality. See [customGear](customGear.md) page for more information.
