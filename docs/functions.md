@@ -82,4 +82,4 @@ Param | Type   | Default Value | Description
 ```
 
 ## `customGear` Functions
-There are a number of functions specifically for the `customGear` funcionality. See [customGear](customGear.md) page for more information.
+There are a number of functions specifically for the `customGear` funcionality. See [customGear](customGear.md#Functions) page for more information.

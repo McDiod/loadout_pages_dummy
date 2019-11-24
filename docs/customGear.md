@@ -43,6 +43,38 @@ class Loadouts {
 };
 ```
 
+## Functions
+
+### GRAD_Loadout_fnc_addCustomGearInteraction
+This will add an interaction to an object to access the `customGear` interface. Note that the condition defined via the `customGear` parameter in your `description.ext` is not applied here. Effect is local.
+
+Param | Type   | Default Value       | Description
+------|--------|---------------------|----------------------------------------------------------------------------------------------------
+0     | object | -                   | The object to attach the interaction to.
+1     | code   | {true}              | Condition for this interaction to be available. Passed parameters [target object, caller]
+2     | array  | ["ACE_MainActions"] | Action path. See also [ACE-Wiki](https://ace3mod.com/wiki/framework/interactionMenu-framework.html)
+
+**Example:**
+```sqf
+[someObject, {WEST isEqualTo side (_this select 0)}, ["ACE_MainActions"]] call grad_loadout_fnc_addCustomGearInteraction
+```
+
+### GRAD_Loadout_fnc_setAllowedCategories
+This will set the allowed customization categories on a per-unit basis. Effect is global.
+
+Param | Type   | Default Value | Description
+------|--------|---------------|-----------------------------------
+0     | object | -             | The unit to set the categories of.
+1     | array  | []            | Array of all allowed categories.
+
+**Example:**
+```sqf
+// initServer.sqf
+{
+    [_x, ["vest", "uniform", "backpack", "headgear"]] call GRAD_Loadout_fnc_setAllowedCategories;
+} forEach (playableUnits select {EAST isEqualTo side _x });
+```
+
 ## Pictures
 
 The `customGear` interface is reminiscent of BI's virtual arsenal:
