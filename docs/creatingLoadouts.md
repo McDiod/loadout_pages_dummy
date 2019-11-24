@@ -99,6 +99,8 @@ Loadout is read from top to bottom, and augemented/overwritten along the way.
 
 ## Special Case: Weapons in backpacks
 If you want to add a weapon to a backpack, simply add the weapon's classname to `addItemsToBackpack` like you would with any other item. However, if you want the weapon to have attachments and/or loaded magazines, the config has to look like the following examples. Note that the weapon class has to be inside the same parent class as the `addItemsToBackpack` property where it is used.
+
+**Example 1:**
 ```sqf
 addItemsToBackpack[] = {"arifle_Mk20C_F", ...};
 class arifle_Mk20C_F {
@@ -110,7 +112,8 @@ class arifle_Mk20C_F {
     underBarrel = "";
 };
 ```
-or
+
+**Example 2:**
 ```sqf
 addItemsToBackpack[] = {"FancySchmazyWeapon", ...};
 class FancySchmazyWeapon {
@@ -123,3 +126,88 @@ class FancySchmazyWeapon {
     underBarrel = "";
 };
 ```
+
+## Complete Example
+In this example the vanilla `BLU_F` faction is being used to for US OCP loadouts. All units of this faction will have the OCP uniform, vest and an M4A1 primary weapon as well as a number of other items. The Rifleman (Type `Soldier_F`) is then assigned uniform and vest contents, which will be used for other roles via inheritance. For example the Assistant Autorifleman will have the same loadout as the standard Rifleman, but with an added backpack. The Autorifleman will then overwrite the `primaryWeapon` assigned in `AllUnits` to use an LMG instead. The `vest` contents that he inherits from the Rifleman will also be overwritten.
+
+```sqf
+class Loadouts {
+    class USOCP {
+        class AllUnits {
+            uniform = "rhs_uniform_cu_ocp";
+            vest = "rhsusf_iotv_ocp_Rifleman";
+            backpack = "";
+            headgear = "rhsusf_ach_helmet_ocp";
+            primaryWeapon = "rhs_weap_m4a1_blockII_bk";
+            primaryWeaponMagazine = "30Rnd_556x45_Stanag";
+            primaryWeaponMuzzle = SUPPRESSORITEM;
+            primaryWeaponPointer = LLITEM;
+            primaryWeaponOptics = "rhsusf_acc_g33_T1";
+            primaryWeaponUnderbarrel = "";
+    		primaryWeaponUnderbarrelMagazine = "";
+            secondaryWeapon = "";
+            secondaryWeaponMagazine = "";
+            handgunWeapon = "rhsusf_weap_m9";
+            handgunWeaponMagazine = "rhsusf_mag_15Rnd_9x19_JHP";
+            binoculars = "Binocular";
+            map = "ItemMap";
+            compass = "ItemCompass";
+            watch = "ItemWatch";
+            gps = "ItemGPS";
+            radio = "tfar_anprc152";
+            nvgoggles = NVITEM;
+        };
+        class Type {
+            //Rifleman
+            class Soldier_F {
+                addItemsToUniform[] = {
+                    LIST_1("ACE_MapTools"),
+                    LIST_1("ACE_DefusalKit"),
+                    LIST_2("ACE_CableTie"),
+                    LIST_1("ACE_Flashlight_MX991"),
+
+                    LIST_4("ACE_packingBandage"),
+                    LIST_4("ACE_elasticBandage"),
+                    LIST_4("ACE_quikclot"),
+                    LIST_4("ACE_tourniquet"),
+                    LIST_2("ACE_morphine"),
+                    LIST_2("ACE_epinephrine")
+                };
+                addItemsToVest[] = {
+                    LIST_2("HandGrenade"),
+                    LIST_2("SmokeShell"),
+                    LIST_2("rhsusf_mag_15Rnd_9x19_JHP"),
+                    LIST_7("30Rnd_556x45_Stanag")
+                };
+            };
+
+            //Asst. Autorifleman
+            class soldier_AAR_F: Soldier_F {
+                backpack = "rhsusf_assault_eagleaiii_ocp";
+                addItemsToBackpack[] = {
+                    LIST_2("rhs_200rnd_556x45_M_SAW"),
+                    "rhsusf_100Rnd_556x45_soft_pouch"
+                };
+            };
+
+            //Autorifleman
+            class soldier_AR_F: Soldier_F {
+                primaryWeapon = "rhs_weap_m249_pip_S";
+                primaryWeaponMagazine = "rhs_200rnd_556x45_M_SAW";
+                handgunWeapon = "";
+                handgunWeaponMagazine = "";
+                vest = "rhsusf_iotv_ocp_SAW";
+                backpack = "rhsusf_assault_eagleaiii_ocp";
+                addItemsToBackpack[] = {
+                    LIST_2("rhs_200rnd_556x45_M_SAW"),
+                    "rhsusf_100Rnd_556x45_soft_pouch"
+                };
+                addItemsToVest[] = {
+                    LIST_2("HandGrenade"),
+                    LIST_2("SmokeShell")
+                };
+            };
+
+        };
+    };
+};
