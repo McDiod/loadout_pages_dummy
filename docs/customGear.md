@@ -1,6 +1,17 @@
 # customGear
 `customGear` is a functionality included in GRAD Loadout that allows players to customize their loadout based on a set of options. By default a player can `ACE-Selfinteract >> Equipment >> Customize loadout`, for a certain time after his loadout was applied.
 
+A player will only ever be able to choose between the options of a randomized item in his loadout. Let's say that this is his loadout (abbreviated):
+
+```sqf
+headgear = "SMM_Helmet_A_BW_FT";
+uniform[] = {"U_C_man_sport_1_F", "U_BG_Guerilla2_1"};
+primaryWeapon = "rhs_weap_hk416d10";
+primaryWeaponOptics[] = {"rhsusf_acc_acog2_usmc","rhsusf_acc_acog3_usmc"};
+```
+
+Only the `uniform` and `primaryWeaponOptics` are randomized, so the player will only be able to choose from the available options in those two categories. This can be further restricted (but not expanded) with the `customGearAllowedCategories` parameter below.
+
 ## Configuration
 There are a set of config parameters that can be used to define how `customGear` will behave (see [Configuration](configuration.md)).
 
