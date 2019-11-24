@@ -9,6 +9,4 @@ Declarative loadout system for Arma3
 
 ## Contents
 - [Installation](installation.md)
-- [Installation2](docs/installation.md)
-- [Installation3](https://mcdiod.github.io/loadout_pages_dummy/installation)
-- [Installation4](https://mcdiod.github.io/loadout_pages_dummy/installation.md)
+- [Installation2](installation)
