@@ -3,9 +3,21 @@
 ## GRAD_Loadout_fnc_factionSetLoadout
 You can dynamically alias a faction name and optionally broadcast it over network (parameter 2, bool):
 
-`["BLU_F", "USMC", true] call GRAD_Loadout_fnc_factionSetLoadout;` – thus, you can change loadout presets for your factions. In this example, this would work now:
+Param | Type   | Default Value | Description
+------|--------|---------------|--------------------------------------------------------------------------------------------
+0     | string | -             | Faction name. Get this with [faction](https://community.bistudio.com/wiki/faction) command.
+1     | string | -             | Loadout classname.
+2     | bool   | false         | Set to true for global effect (`publicVariable`).
 
+
+**Example:**
+```sqf
+// initServer.sqf - Set BLU_F faction to use USMC loadout.
+["BLU_F", "USMC", true] call GRAD_Loadout_fnc_factionSetLoadout;
 ```
+
+```sqf
+// description.ext
 class Loadouts {
     class Faction {
         class USMC {
@@ -17,11 +29,30 @@ class Loadouts {
 };
 ```
 
+## GRAD_Loadout_fnc_factionGetLoadout
+Get loadout classname set via `GRAD_Loadout_fnc_factionSetLoadout`.
+
+Param | Type   | Default Value | Description
+------|--------|---------------|--------------------------------------------------------------------------------------------
+0     | string | -             | Faction name. Get this with [faction](https://community.bistudio.com/wiki/faction) command.
+
+**Return Value**
+String - Loadout classname.
+
+**Example:**
+```sqf
+// get loadout from above example
+private _bluLoadoutClassname = ["BLU_F"] call GRAD_Loadout_fnc_factionGetLoadout;
+```
+
 ## GRAD_Loadout_fnc_doLoadoutForUnit
 Call this with unit as first parameter to dynamically assign loadout during scenario.
 
-**Example:**
+Param | Type   | Default Value | Description
+------|--------|---------------|------------------------
+0     | object | -             | Unit to do loadout for.
 
+**Example:**
 ```sqf
 [player] call GRAD_Loadout_fnc_doLoadoutForUnit;
 ```
@@ -29,8 +60,13 @@ Call this with unit as first parameter to dynamically assign loadout during scen
 ## GRAD_Loadout_fnc_addReviver
 Use to dynamically adjust loadout values. This example adds a bit of randomization to Russian helmets and broadcasts the reviver over network (parameter 2, bool):
 
-**Example:**
+Param | Type   | Default Value | Description
+------|--------|---------------|------------------------------------------------------------------------------------------------------
+0     | code   | {}            | Code block that has to return an item classname. Parameters to this are `[previous classname, unit]`.
+1     | string | ""            | item option name
+2     | bool   | false         | Set to true for global effect (`publicVariable`).
 
+**Example:**
 ```sqf
 [
     {
