@@ -1,3 +1,3 @@
 - **User Guide**
-  - [Installation](installation)
-  - [nonexistantlink](nonexistantlink)
+    - [Home](/)
+    - [Installation](Installation)
